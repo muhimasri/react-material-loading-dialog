@@ -1,23 +1,51 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Button, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core';
+import { Dialog } from './Dialog'
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubscribe = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 2000)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button variant="outlined" onClick={() => setOpen(true)}>Open Dialog</Button>
+      <Dialog loading={loading} open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To subscribe to this website, please enter your email address here. We will send updates
+            occasionally.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubscribe} color="primary">
+            Subscribe
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
