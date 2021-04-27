@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# How to Create a Built-In Loading Bar for your React Dialog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An example code for creating a built-in loading bar for your React Material Dialog. Please refer to [this article](https://muhimasri.com/blogs/how-to-create-a-built-in-loading-bar-for-your-react-dialog/) for a detailed explanation.
 
 ## Available Scripts
 
